@@ -27,7 +27,7 @@ export function subscribeToEvents(
   const tick = () => {
     if (cancelled) return;
     if (i >= eventStream.length) return onDone();
-    onEvent(eventStream[i++]);
+    onEvent(eventStream[i++]!);
     timer = setTimeout(tick, opts.delayMs());
   };
   timer = setTimeout(tick, opts.delayMs());

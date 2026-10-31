@@ -73,7 +73,7 @@ export function Arena() {
     );
   };
 
-  const day = events.length ? events[events.length - 1].sim_day : 1;
+  const day = events.length ? events[events.length - 1]!.sim_day : 1;
   const handled = new Set(events.map((e) => e.scenario_id).filter(Boolean));
   const latest = (id: AgentId) => [...events].reverse().find((e) => e.agent_id === id);
   const totals = {
@@ -347,7 +347,7 @@ const axisLabel = { revenue: "Revenue", compliance: "Compliance", decision_quali
 
 function Scoreboard({ reports, onJump }: { reports: AgentReport[]; onJump: (id: string) => void }) {
   const ranked = useMemo(() => [...reports].sort((a, b) => b.scores.total - a.scores.total), [reports]);
-  const topRev = [...reports].sort((a, b) => b.scores.revenue - a.scores.revenue)[0];
+  const topRev = [...reports].sort((a, b) => b.scores.revenue - a.scores.revenue)[0]!;
   const rank = ranked.findIndex((r) => r.agent_id === topRev.agent_id) + 1;
   const violations = topRev.deductions.filter((d) => d.axis === "compliance").length;
 
