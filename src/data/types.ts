@@ -14,7 +14,7 @@ export interface AgentEvent {
   agent_reasoning: string;
   budget_after: number;
   revenue_after: number;
-  scenario_id?: string;
+  scenario_id?: string | undefined;
 }
 
 export interface Deduction {
